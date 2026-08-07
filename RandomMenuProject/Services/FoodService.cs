@@ -46,4 +46,11 @@ public class FoodService
     {
         await _foods.DeleteOneAsync(f => f.Id == id);
     }
+
+    public async Task IncrementSelectionCountAsync(string id)
+    {
+        var filter = Builders<FoodItem>.Filter.Eq(f => f.Id, id);
+        var update = Builders<FoodItem>.Update.Inc(f => f.SelectionCount, 1);
+        await _foods.UpdateOneAsync(filter, update);
+    }
 }

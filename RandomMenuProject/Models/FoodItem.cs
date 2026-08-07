@@ -14,4 +14,5 @@ public class FoodItem
 
     [BsonElement("createdAt")]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public int SelectionCount { get; set; } = 0;
 }
